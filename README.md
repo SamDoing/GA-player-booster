@@ -9,9 +9,10 @@
 ## Misc
 Esconde o cursor e a barra de controles quando inativo.
 ## Como usar
-Para utilizar abra o DevTools do navegador, na aba console, copie, cole e execute o codigo abaixo
+Para utilizar abra o DevTools do navegador, na aba console, copie, cole e execute o codigo abaixo.
 - Atalho DevTools Chrome: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>i</kbd>
-Obs: O script só entra em execução após iníciar o vídeo pela primeira vez
+
+Obs: O script só entra em execução após iníciar o vídeo pela primeira vez.
 ## Código
 ```
 let video;
