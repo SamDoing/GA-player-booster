@@ -21,12 +21,15 @@ let buttonFullscreen;
 let speedList;
 let captionList;
 let volumeBar;
+
+let volume = 1.0;
 let speedRate = 1.0;
 let caption = 'Desativadas';
-let btnSpeed;
+
 
 function updateVol(desiredVol) {
     video.volume = desiredVol;
+    volume = desiredVol;
     volumeBar.value = desiredVol * 100;
     volumeBar.style.backgroundSize = desiredVol*100 + '% 100%';
 }
@@ -99,30 +102,6 @@ function changeVolumeBar() {
  
 }
 
-function addSpeedButton() {
-    btnSpeed = document.createElement("button");
-    btnSpeed.innerHTML = "3x";
-    btnSpeed.style.opacity = 0.5;
-    btnSpeed.classList.add("disable");
-    btnSpeed.style.cursor = 'pointer';
-
-    speedList[0].parentNode.parentNode.parentNode.parentNode.insertBefore(btnSpeed, speedList[0].parentNode.parentNode.parentNode);
-    btnSpeed.onclick = () => {
-        if(btnSpeed.classList.contains("disable"))
-        {
-            video.playbackRate = 3.0;
-            btnSpeed.style.opacity = 1.0;
-            btnSpeed.classList.remove("disable");
-            btnSpeed.classList.add("active");
-            return;
-        }
-        video.playbackRate = 1.0;
-        btnSpeed.style.opacity = 0.5;
-        btnSpeed.classList.remove("active");
-        btnSpeed.classList.add("disable");
-    };
-}
-
 function loadApplicationContext() {
     console.log('Loading Application Context');
     
@@ -143,6 +122,7 @@ function loadApplicationContext() {
     
     updateSpeed(speedRate);
     updateCaption();
+    updateVol(volume);
 
     function hideVideoCursorAndControls() {
         videoContainer.style.cursor = 'none';
