@@ -143,6 +143,8 @@ function loadApplicationContext() {
     
         hiddingTimer = setTimeout(hideVideoCursorAndControls, 2000);
     });
+
+    videoContainer.ondblclick = () => shorts.f();
     
     controls.addEventListener('mouseenter', () => clearInterval(hiddingTimer));
 
