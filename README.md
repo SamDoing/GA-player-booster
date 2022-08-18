@@ -108,8 +108,8 @@ function loadApplicationContext() {
 
     changeVolumeBar();
 
-    let videoContainer = document.querySelector('.sc-egiyK');
-    let controls = document.querySelector('.gUsvDy');
+    let videoContainer = document.querySelector('video').parentNode.parentNode.childNodes[2].firstChild;
+    let controls = document.querySelector('video').parentNode.parentNode.childNodes[2].children[1];
     let hiddingTimer;
     
     updateSpeed(speedRate);
