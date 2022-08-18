@@ -23,6 +23,7 @@ let captionList;
 let volumeBar;
 let speedRate = 1.0;
 let caption = 'Desativadas';
+let btnSpeed;
 
 function updateVol(desiredVol) {
     video.volume = desiredVol;
@@ -98,6 +99,30 @@ function changeVolumeBar() {
  
 }
 
+function addSpeedButton() {
+    btnSpeed = document.createElement("button");
+    btnSpeed.innerHTML = "3x";
+    btnSpeed.style.opacity = 0.5;
+    btnSpeed.classList.add("disable");
+    btnSpeed.style.cursor = 'pointer';
+
+    speedList[0].parentNode.parentNode.parentNode.parentNode.insertBefore(btnSpeed, speedList[0].parentNode.parentNode.parentNode);
+    btnSpeed.onclick = () => {
+        if(btnSpeed.classList.contains("disable"))
+        {
+            video.playbackRate = 3.0;
+            btnSpeed.style.opacity = 1.0;
+            btnSpeed.classList.remove("disable");
+            btnSpeed.classList.add("active");
+            return;
+        }
+        video.playbackRate = 1.0;
+        btnSpeed.style.opacity = 0.5;
+        btnSpeed.classList.remove("active");
+        btnSpeed.classList.add("disable");
+    };
+}
+
 function loadApplicationContext() {
     console.log('Loading Application Context');
     
@@ -110,7 +135,11 @@ function loadApplicationContext() {
 
     let videoContainer = document.querySelector('video').parentNode.parentNode.childNodes[2].firstChild;
     let controls = document.querySelector('video').parentNode.parentNode.childNodes[2].children[1];
-    let hiddingTimer;
+    
+    if(controls.firstChild.tagName === 'VIDEO')
+        controls = document.querySelector('video').parentNode.parentNode.childNodes[2].children[2];
+    
+        let hiddingTimer;
     
     updateSpeed(speedRate);
     updateCaption();
@@ -166,7 +195,6 @@ window.history.pushState = (arg1, arg2) => {
 
 let checkVideo = setInterval(() => {
     if(video) return;
-
     setup();
 }, 500);
 ```
