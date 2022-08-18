@@ -1,14 +1,17 @@
 # Facilitador do uso do player
 ## Atalhos
-Setas direcionais - volume e skip.
-X - altera a velocidade.
-C - altera a legenda.
-F - altera modo full screen.
-M - ativa o modo mini-player.
-Espaço - pausa/play.
+- Setas direcionais - volume e skip.
+- X - altera a velocidade.
+- C - altera a legenda.
+- F - altera o modo full-screen.
+- M - altera o modo mini-player.
+- Espaço - pausa/play.
 ## Misc
 Esconde o cursor e a barra de controles quando inativo.
-## Codigo
+## Como usar
+Para utilizar abra o DevTools do navegador, na aba console, copie, cole e execute o codigo abaixo.
+- Atalho DevTools Chrome: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>i</kbd>
+## Código
 ```
 let video;
 let buttonPlay;
@@ -94,7 +97,7 @@ function changeVolumeBar() {
 }
 
 function loadApplicationContext() {
-    console.log("Loading Application Context");
+    console.log('Loading Application Context');
     
     buttonPlay = document.querySelector('button');
     buttonFullscreen = document.querySelectorAll('button')[8];
