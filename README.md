@@ -7,7 +7,8 @@
 - M - altera o modo mini-player
 - Espaço - pausa/play
 ## Misc
-Esconde o cursor e a barra de controles quando inativo.
+- Esconde o cursor e a barra de controles quando inativo
+- Mantém as conf entre os vídeos
 ## Como usar
 Para utilizar abra o DevTools do navegador, na aba console, copie, cole e execute o codigo abaixo.
 - Atalho DevTools Chrome: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>i</kbd>
@@ -118,7 +119,7 @@ function loadApplicationContext() {
     if(controls.firstChild.tagName === 'VIDEO')
         controls = document.querySelector('video').parentNode.parentNode.childNodes[2].children[2];
     
-        let hiddingTimer;
+    let hiddingTimer;
     
     updateSpeed(speedRate);
     updateCaption();
