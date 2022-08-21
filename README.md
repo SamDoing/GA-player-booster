@@ -168,13 +168,14 @@ function setup() {
         video.onplay = null;
     }
 }
-const pushState = window.history.pushState;
 
-window.history.pushState = (arg1, arg2) => {
-    pushState(arg1, arg2);
-    window.onkeydown = null;
-    setup();
-};
+window.history.pushState = new Proxy(window.history.pushState, {
+    apply: (target, thisArg, argArray) => {
+        window.onkeydown = null;
+        setup();
+        return target.apply(thisArg, argArray);
+    },
+  });
 
 let checkVideo = setInterval(() => {
     if(video) return;
