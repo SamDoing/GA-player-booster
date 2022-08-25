@@ -16,6 +16,12 @@ Para utilizar abra o DevTools do navegador, na aba console, copie, cole e execut
 Obs: O script só entra em execução após iníciar o vídeo pela primeira vez.
 ## Código
 ```
+this.$ = (doc) => { 
+    result = document.querySelectorAll(doc);
+    if(result.length == 1) 
+        return result[0]
+    return result;
+};
 let video;
 let buttonPlay;
 let buttonFullscreen;
@@ -92,7 +98,7 @@ const shorts = {
 
 function changeVolumeBar() {
     
-    let oldVolumeBar = document.querySelectorAll('input')[1];
+    let oldVolumeBar = $All('input')[1];
     volumeBar = oldVolumeBar.cloneNode();
     
     oldVolumeBar.parentNode.appendChild(volumeBar);
@@ -106,18 +112,18 @@ function changeVolumeBar() {
 function loadApplicationContext() {
     console.log('Loading Application Context');
     
-    buttonPlay = document.querySelector('button');
-    buttonFullscreen = document.querySelectorAll('button')[8];
-    speedList = document.querySelector('.smash-player-menu').firstChild.childNodes;
-    captionList = document.querySelectorAll('.smash-player-menu')[1].firstChild.childNodes
+    buttonPlay = $('button');
+    buttonFullscreen = $('button')[8];
+    speedList = $('.smash-player-menu').firstChild.childNodes;
+    captionList = $('.smash-player-menu')[1].firstChild.childNodes
 
     changeVolumeBar();
 
-    let videoContainer = document.querySelector('video').parentNode.parentNode.childNodes[2].firstChild;
-    let controls = document.querySelector('video').parentNode.parentNode.childNodes[2].children[1];
+    let videoContainer = $('video').parentNode.parentNode.childNodes[2].firstChild;
+    let controls = $('video').parentNode.parentNode.childNodes[2].children[1];
     
     if(controls.firstChild.tagName === 'VIDEO')
-        controls = document.querySelector('video').parentNode.parentNode.childNodes[2].children[2];
+        controls = $('video').parentNode.parentNode.childNodes[2].children[2];
     
     let hiddingTimer;
     
@@ -160,7 +166,7 @@ function loadApplicationContext() {
     };
 }
 function setup() {
-    video = document.querySelector('video');
+    video = $('video');
     if(!video) return;
     
     video.onplay = () => {
