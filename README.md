@@ -119,11 +119,11 @@ function loadApplicationContext() {
 
     changeVolumeBar();
 
-    let videoContainer = $('video').parentNode.parentNode.childNodes[2].firstChild;
-    let controls = $('video').parentNode.parentNode.childNodes[2].children[1];
+    let videoContainer = video.parentNode.parentNode.childNodes[2].firstChild;
+    let controls = video.parentNode.parentNode.childNodes[2].children[1];
     
     if(controls.firstChild.tagName === 'VIDEO')
-        controls = $('video').parentNode.parentNode.childNodes[2].children[2];
+        controls = video.parentNode.parentNode.childNodes[2].children[2];
     
     let hiddingTimer;
     
@@ -166,7 +166,7 @@ function loadApplicationContext() {
     };
 }
 function setup() {
-    video = $('video');
+    video = document.querySelector('video');
     if(!video) return;
     
     video.onplay = () => {
