@@ -98,7 +98,7 @@ const shorts = {
 
 function changeVolumeBar() {
     
-    let oldVolumeBar = $All('input')[1];
+    let oldVolumeBar = $('input')[1];
     volumeBar = oldVolumeBar.cloneNode();
     
     oldVolumeBar.parentNode.appendChild(volumeBar);
